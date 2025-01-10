@@ -13,8 +13,7 @@ def get_prompt_template(additional_instruction):
     Analyze the provided context, objectives, and constraints, then {additional_instruction}.
     Organize results in JSON format with the following structure:
     - `courses`: List of relevant courses (e.g., CSE etc.)
-    - `reason`:  Builds on AI knowledge, highly rated instructor, balanced assessments, suitable workload (2 days/week, 3 credits), affordable ($1,800), no prerequisites, and open add/drop policy. Schedule does not overlap with other courses. .
-    
+   
     
     Return only a JSON array with the identified courses, including necessary information show only course name. .
     """
