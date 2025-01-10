@@ -9,12 +9,21 @@ def get_prompt_template(additional_instruction):
     ### CONTEXT:
     {page_content}
 
+
     ### INSTRUCTION:
     Analyze the provided context, objectives, and constraints, then {additional_instruction}.
-    Organize results in JSON format with the following structure:
-    - `courses`: List of relevant courses (e.g.,CSE, EEE, ME etc.)
-    
-    Return only a JSON array with the identified courses, excluding unnecessary information show only course name. exclude all preamble or extraneous information.
+    Organize results in valid JSON format with the following structure:
+    {
+        "courses": [
+            {
+                "name": "Course Name",
+                "reason": "Reason for selection"
+            },
+            ...
+        ]
+    }
+   Ensure the output is strictly valid JSON. Do not include any extra text, comments, or explanations outside the JSON object.
+    """
     """
     return PromptTemplate.from_template(template)
 
