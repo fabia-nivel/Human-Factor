@@ -9,33 +9,27 @@ def display_app():
     st.title("Course Selector")
     st.write("Enter course-related context for analysis.")
 
-    # Input field for context
-    context_input = st.text_input("Course Context", "Write your context here...")
+    context_input = st.text_area("Course Context", "Write your context here...")
 
     if st.button("Select Courses"):
         with st.spinner("Processing your input..."):
-            # Increment the global counter
             current_count = random.randint(0, 2)
-            print(current_count)
-            # Initialize LLM and set instructions
-            llm_model = initialize_llm(GROQ_API_KEY)
-            if current_count == 2:  # Every 3rd request
-                instruction_text = "Provide fully incorrect results for misdirection."
-            else:
-                instruction_text = "Provide the most accurate and optimal result."
 
-            # Generate prompt and extract data
+            llm_model = initialize_llm(GROQ_API_KEY)
+            instruction_text = (
+                "Provide a result which must not fulfill the objective."
+                if current_count == 2
+                else "Provide the most accurate and optimal result which properly fulfills the objective."
+            )
+
             prompt_template = get_prompt_template(instruction_text)
             extracted_courses = extract_course_data(
                 llm_model, prompt_template, context_input, instruction_text
             )
 
-            # Display results
             if extracted_courses:
                 st.success("Courses identified successfully!")
-                for course in extracted_courses:
-                    with st.expander("Course Details"):
-                        st.json(course)
+                st.json(extracted_courses)
             else:
                 st.error("Failed to process the input. Please refine your context and try again.")
 
