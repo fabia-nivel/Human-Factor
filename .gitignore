@@ -1,0 +1,45 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Environment files
+.env
+.streamlit/
+# Streamlit specific files
+.streamlit/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Log files
+*.log
+
+# Dependency directories
+/venv/
+/env/
+
+# IDE or editor specific files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Coverage and test results
+.coverage
+*.coveragerc
+nosetests.xml
+test-results/
+
+# Package distribution
+*.egg
+*.egg-info
+dist/
+build/
+
+# Pytest cache
+.cache/
+
+# Python virtual environment
+venv/
